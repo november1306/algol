@@ -36,7 +36,13 @@ public class EmaComp {
             find all exisitng pluses of size 3+
          */
         getAllPluses();
+        /*
+            sort biggest pluses on top
+         */
         Collections.sort(plusList);
+        /*
+            find 2 biggest Pluses and multiple their sizes
+         */
         resValue = selectTwoMaxPlus(plusList);
         System.out.println("max production of cross sizes: "+ resValue);
         return resValue;
@@ -96,14 +102,12 @@ public class EmaComp {
                 if (intGrid[i][j] == 1)
                     detectPlus(i, j, 0);
             }
-
         }
         return plusList;
     }
 
     private void detectPlus(int i, int j, int shiftSize) {
         if (isGood(i + shiftSize, j) && isGood(i, j + shiftSize) && isGood(i - shiftSize, j) && isGood(i, j - shiftSize)) {
-
             plusList.add(new Plus(shiftSize * 2 + 1, new Point(i, j)));
             detectPlus(i, j, shiftSize + 1);
         }
@@ -134,7 +138,6 @@ public class EmaComp {
                         numGrid[i][j] = 0;
                         break;
                 }
-                ;
                 System.out.print(numGrid[i][j]);
             }
             System.out.println();
