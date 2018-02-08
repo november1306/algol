@@ -1,9 +1,9 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.Math.abs;
@@ -21,8 +21,10 @@ public class EmaComp {
 
     @Test
     public void test1() {
-        String grid[] = {"GGGGGGGG", "GBGBGGBG", "GBGBGGBG", "GGGGGGGG", "GBGBGGBG","GGGGGGGG", "GBGBGGBG", "GGGGGGGG" };
-        calculatePluses(grid);
+        String grid[] = {"BGBBGB", "GGGGGG", "BGBBGB", "GGGGGG", "BGBBGB", "BGBBGB"};
+        int result = calculatePluses(grid);
+        Assert.assertEquals(25, result, "Something went wrong");
+
     }
 
 
