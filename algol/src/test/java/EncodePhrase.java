@@ -7,7 +7,9 @@ public class EncodePhrase {
         String phrase = "You Shall Not Pass 19";
         String encPhrase;
         int salt = 0x3;
-
+        int salt2 = 3;
+        System.out.println((int) 'A');
+        System.out.println((int) 'z');
         encPhrase = new String(encodePhrase(phrase, salt, true));
         System.out.println(encPhrase);
         String decPhrase =  new String(encodePhrase(encPhrase, salt, false));
@@ -34,6 +36,7 @@ public class EncodePhrase {
             }
             if (('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z')) {
                 int i = (int) ch;
+
                 if (encode)
                     encCh = (char) (i + salt);
                 if (!encode)

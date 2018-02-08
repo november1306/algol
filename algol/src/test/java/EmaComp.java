@@ -21,7 +21,7 @@ public class EmaComp {
 
     @Test
     public void test1() {
-        String grid[] = {"BGBBGB", "GGGGGG", "BGBBGB", "GGGGGG", "BGBBGB", "BGBBGB"};
+        String grid[] = {"GGGGGGGG", "GBGBGGBG", "GBGBGGBG", "GGGGGGGG", "GBGBGGBG","GGGGGGGG", "GBGBGGBG", "GGGGGGGG" };
         calculatePluses(grid);
     }
 
@@ -58,7 +58,7 @@ public class EmaComp {
             pl1 = plusList.get(i);
             for (int j = i + 1; j < plusList.size() - 1; j++) {
                 pl2 = plusList.get(j);
-                if (crosses(pl1, pl2) == false && pl1.getSize() + pl2.getSize() > maxProduct) {
+                if (crosses(pl1, pl2) == false && countSize(pl1.getSize(), pl2.getSize()) > maxProduct) {
                     maxProduct = countSize(pl1.getSize(), pl2.getSize());
                     if (maxProduct == bestOutcome)
                         return maxProduct;
@@ -89,7 +89,7 @@ public class EmaComp {
         if (y1 == y2 && abs(x1 - x2) < size1 + size2 + 1)
             doCross = true;
 
-        if (!doCross && (abs(x2 - x1) <= Math.max(size1, size2) || abs(y2 - y1) <= Math.max(size1, size2))) {
+        if (!doCross && (abs(x2 - x1) <= Math.min(size1, size2) || abs(y2 - y1) <= Math.min(size1, size2))) {
             doCross = true;
         }
         return doCross;
